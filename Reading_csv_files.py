@@ -22,10 +22,12 @@ def read_csv():
     if device == 1:
         os.chdir("D:/OneDrive - Northeastern University/Data-Science-datasets")
         print("Location changed for Windows")
+        print("Updated Location is: D:/OneDrive - Northeastern University/Data-Science-datasets")
 
     elif device == 2:
         os.chdir("/Users/adityaagarwal/Library/CloudStorage/OneDrive-NortheasternUniversity/Data-Science-datasets/")
         print("Location changed for Mac")
+        print("Updated Location is: /Users/adityaagarwal/Library/CloudStorage/OneDrive-NortheasternUniversity/Data-Science-datasets")
     else:
         print("Either enter 1 or 2")
 #df = pd.read_csv("./Flight Status Prediction/Combined_Flights_2022.parquet")
