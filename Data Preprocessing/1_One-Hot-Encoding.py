@@ -7,28 +7,27 @@ Created on Sun Aug  4 22:18:11 2024
 
 import numpy as np
 import pandas as pd
+import os
 from sklearn.model_selection import train_test_split
+import warnings
+warnings.filterwarnings("ignore")
 
-#df = pd.read_csv("D:\OneDrive - Northeastern University\Jupyter Notebook\Machine Learning Algorithms\Datasets/Clean_data")
-
-data = 'Clean_data'
-device_type = int(input("Enter 1 for Windows and 2 for Mac"))
-
-if device_type == 1:
-    df = pd.read_csv("D:\OneDrive - Northeastern University\Jupyter Notebook\Machine Learning Algorithms\Datasets" + data)
-    print(df.head()) 
-elif(device_type == 2):
-    df = pd.read_csv("/Users/adityaagarwal/Library/CloudStorage/OneDrive-NortheasternUniversity/Jupyter Notebook/Machine Learning Algorithms/Datasets/" + data)   
-    print(df.head())        
+device = int(input("Select 1 for Windows and 2 for Mac"))
+if device == 1:
+    os.chdir("D:/OneDrive - Northeastern University/Jupyter Notebook/Machine Learning Algorithms/Datasets")
 else:
-    print("Enter either 1 or 2")
+    os.chdir("/Users/adityaagarwal/Library/CloudStorage/OneDrive-NortheasternUniversity/Data-Science-datasets/")
     
-
+df = pd.read_csv("./Clean_data")
+df.head(3)
+    
 # Creating a small subset of the data
 df = df[["Alley","LotShape","GarageCond","MasVnrArea","SalePrice"]]
 df.head(5)
 
+################################################
 ## ONE HOT ENCODING USING PANDAS (GET DUMMIES)
+################################################
 def dummy_encoding(data):
     dummy = pd.get_dummies(data, drop_first=True)
     print("The columns are ", dummy.columns)
@@ -42,13 +41,13 @@ def dummy_encoding(data):
 
 dummy_data = dummy_encoding(df)
 
-
+################################################
 ## ONE HOT ENCODING USNIG SCIKIT-LEARN
+################################################
 def one_hot_encoding(data):
     from sklearn.preprocessing import OneHotEncoder
     
-    encoder = OneHotEncoder(categories = 'auto', drop = 'first', sparse = False,
-                             handle_unknown="error")
+    encoder = OneHotEncoder(categories = 'auto', drop = 'first', sparse = False, handle_unknown="error")
     # Fit
     encoder.fit(data)
     # Transform
