@@ -20,7 +20,7 @@ def read_csv():
     device = int(input("Select 1 if you are working in Windows Laptop and 2 for MacBook: "))
 
     if device == 1:
-        folder = int(input("Select 1 if the location of the dataset is 'Machine Learning Datasets' or 2 if Data science datasets")
+        folder = int(input("Select 1 if the location of the dataset is 'Machine Learning Datasets' or 2 if Data science datasets"))
         
         if folder == 1:
             os.chdir("D:\OneDrive - Northeastern University\Jupyter Notebook\Machine Learning Algorithms\Datasets")
